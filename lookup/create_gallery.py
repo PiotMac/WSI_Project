@@ -4,9 +4,9 @@ import numpy as np
 import csv
 import math
 
-SLIDE_ID = "507754_M_3_S_MGG_22_03"
-MAX_PATCHES = 9050
-PATCH_DISPLAY_SIZE = 128
+SLIDE_ID = "128249_M_3_S_MGG_14_03"
+MAX_PATCHES = 209995
+PATCH_DISPLAY_SIZE = 32
 
 tmp_dir = os.environ.get('TMPDIR')
 input_slide_dir = os.path.join(tmp_dir, "malignant", SLIDE_ID)
@@ -33,7 +33,7 @@ patches_to_show = all_patches[:MAX_PATCHES]
 print(f"Tworzę siatkę z {len(patches_to_show)} patchy...")
 
 # grid_size = math.ceil(math.sqrt(len(patches_to_show)))
-grid_size = 98
+grid_size = 656
 
 grid_rows = []
 current_row = []
@@ -63,5 +63,9 @@ if len(current_row) > 0:
 final_image = np.vstack(grid_rows)
 
 
-cv2.imwrite(output_image_path, final_image)
-print(f"Sukces! Galeria zapisana u Ciebie w folderze jako: {SLIDE_ID}_lookup_filtered.jpg")
+success = cv2.imwrite(output_image_path, final_image)
+
+if success:
+    print(f"Sukces! Galeria zapisana u Ciebie w folderze jako: {SLIDE_ID}_lookup_filtered.jpg")
+else:
+    print(f"BŁĄD ZAPISU! OpenCV nie mogło zapisać obrazu (prawdopodobnie obraz nadal jest zbyt duży lub zła ścieżka).")

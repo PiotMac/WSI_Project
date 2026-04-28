@@ -4,6 +4,7 @@
 #SBATCH --mem=100GB
 #SBATCH --cpus-per-task=1
 #SBATCH --output=log_preprocess_%j.txt
+#SBATCH --extra=FORCE_RM_TMPDIR
 
 source /home/piomac5688/env_wsi/bin/activate
 

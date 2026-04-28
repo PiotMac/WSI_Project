@@ -1,0 +1,12 @@
+.venv/
+env/
+__pycache__/
+*.pyc
+.idea/
+.vscode/
+.DS_Store
+lookup/*.jpg
+models/
+logs/
+csv_filtered_patches/
+
